@@ -5,9 +5,10 @@ import { TrangChuComponent } from './trang-chu/trang-chu.component';
 import { DanhSachPhimComponent } from './danh-sach-phim/danh-sach-phim.component';
 import { TinTucComponent } from './tin-tuc/tin-tuc.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { ItemPhimComponent } from './danh-sach-phim/item-phim/item-phim.component';
 
 @NgModule({
-  declarations: [HomeComponent, TrangChuComponent, DanhSachPhimComponent, TinTucComponent],
+  declarations: [HomeComponent, TrangChuComponent, DanhSachPhimComponent, TinTucComponent, ItemPhimComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
