@@ -14,8 +14,8 @@ export class QuanLiPhimService {
 
   //observable
   layDanhSachPhim(): Observable<any>{
-    const url = `http://svcy2.myclass.vn/api/QuanLyPhim/LayDanhSachPhim?MaNhom=GP06`;
-    let observable = this.http.get(url).pipe(
+    const url = `http://svcy2.myclass.vn/api/QuanLyPhim/LayDanhSachPhim?MaNhom=GP09`;
+    return this.http.get(url).pipe(
       tap(
         // ket qua
         ()=>{},
@@ -24,8 +24,38 @@ export class QuanLiPhimService {
         })
       )
     );
-    return observable; 
   }
+
+  layChiTietPhim(maPhim): Observable<any>{
+    const url = `http://svcy2.myclass.vn/api/QuanLyPhim/LayChiTietPhim?MaPhim=${maPhim}`;
+    return this.http.get(url).pipe(
+      tap(
+        // ket qua
+        ()=>{},
+        catchError(err => {
+          return this.handleError(err);
+        })
+      )
+    );
+  }
+
+  chiTietPhongVe(maLichChieu): Observable<any> {
+    const url = `http://svcy2.myclass.vn/api/QuanLyPhim/ChiTietPhongVe?MaLichChieu=${maLichChieu}`;
+    return this.http.get(url).pipe(
+      tap(
+        // ket qua
+        ()=>{},
+        catchError(err => {
+          return this.handleError(err);
+        })
+      )
+    );
+  }
+
+
+
+
+
 
   handleError(err){
     //handle Error:backend cung cấp để viết
