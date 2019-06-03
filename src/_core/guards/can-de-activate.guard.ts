@@ -17,6 +17,10 @@ export class CanDeActivateGuard implements CanDeactivate<DangKyComponent> {
   
 }
 
+//tạo class mới phải thêm Injectable
+@Injectable({
+  providedIn: 'root'
+})
 
 export class CanDeActivateDangNhapGuard implements CanDeactivate<DangNhapComponent> {
   canDeactivate(component){

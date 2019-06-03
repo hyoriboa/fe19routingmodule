@@ -46,7 +46,7 @@ const routes: Routes = [
     // forChild
   imports: [RouterModule.forChild(routes)],
 //   cung cấp CanDeActivateGuard và CanDeActivateDangNhapGuard đúng routing nó dùng
-  providers: [CanDeActivateGuard, CanDeActivateDangNhapGuard],
+//   providers: [CanDeActivateGuard, CanDeActivateDangNhapGuard],
   exports: [RouterModule]
 })
 export class FormRoutingModule { }
