@@ -45,7 +45,8 @@ const routes: Routes = [
 @NgModule({
     // forChild
   imports: [RouterModule.forChild(routes)],
-//   cung cấp CanDeActivateGuard và CanDeActivateDangNhapGuard đúng routing nó dùng
+//   cung cấp CanDeActivateGuard và CanDeActivateDangNhapGuard đúng routing nó dùng hoặc thêm Injectable 
+//vào trên class
 //   providers: [CanDeActivateGuard, CanDeActivateDangNhapGuard],
   exports: [RouterModule]
 })
