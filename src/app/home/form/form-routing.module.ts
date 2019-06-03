@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DangKyComponent } from './dang-ky/dang-ky.component';
 import { FormComponent } from './form.component';
 import { DangNhapComponent } from './dang-nhap/dang-nhap.component';
+import { CanDeActivateGuard, CanDeActivateDangNhapGuard } from 'src/_core/guards/can-de-activate.guard';
 
 const routes: Routes = [
 
@@ -11,9 +12,14 @@ const routes: Routes = [
         component: FormComponent,
         children: [
             //Dang ki
+            // {
+            //     path:"",
+            //     component: DangKyComponent
+            // },
             {
                 path:"",
-                component: DangKyComponent
+                component: DangKyComponent,
+                canDeactivate: [CanDeActivateGuard]
             },
 
             {
@@ -24,7 +30,9 @@ const routes: Routes = [
             //Dang nhap
             {
                 path:"dang-nhap",
-                component: DangNhapComponent
+                component: DangNhapComponent,
+                canDeactivate: [CanDeActivateDangNhapGuard]
+
             },
 
         ]
@@ -37,6 +45,8 @@ const routes: Routes = [
 @NgModule({
     // forChild
   imports: [RouterModule.forChild(routes)],
+//   cung cấp CanDeActivateGuard và CanDeActivateDangNhapGuard đúng routing nó dùng
+  providers: [CanDeActivateGuard, CanDeActivateDangNhapGuard],
   exports: [RouterModule]
 })
 export class FormRoutingModule { }

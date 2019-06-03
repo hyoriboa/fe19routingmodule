@@ -5,6 +5,8 @@ import { TrangChuComponent } from './trang-chu/trang-chu.component';
 import { TinTucComponent } from './tin-tuc/tin-tuc.component';
 import { DanhSachPhimComponent } from './danh-sach-phim/danh-sach-phim.component';
 import { ChiTietPhimComponent } from './danh-sach-phim/chi-tiet-phim/chi-tiet-phim.component';
+import { AuthenGuard } from 'src/_core/guards/authen.guard';
+import { CanDeActivateGuard } from 'src/_core/guards/can-de-activate.guard';
 
 
 const routes: Routes = [
@@ -18,7 +20,8 @@ const routes: Routes = [
         {path: "home", component: TrangChuComponent},
         
         //danh sách phim
-        {path: "danh-sach-phim", component: DanhSachPhimComponent},
+        // {path: "danh-sach-phim", component: DanhSachPhimComponent},
+        {path: "danh-sach-phim", component: DanhSachPhimComponent, canActivate: [AuthenGuard]},
 
         //Chi tiet phim
         // truyền 1 tham số
@@ -33,7 +36,8 @@ const routes: Routes = [
         //trang Form
         {
             path:"form",
-            loadChildren: "./form/form.module#FormModule"
+            loadChildren: "./form/form.module#FormModule",
+
         },
 
         //tin tức

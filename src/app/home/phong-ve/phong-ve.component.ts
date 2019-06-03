@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {QuanLiPhimService} from './../../../_core/services/quan-li-phim.service';
 
+import {DataService} from './../../../_core/services/data.service';
+
 @Component({
   selector: 'app-phong-ve',
   templateUrl: './phong-ve.component.html',
@@ -13,7 +15,8 @@ export class PhongVeComponent implements OnInit {
   public danhSachGhe:any;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private quanLiPhimService: QuanLiPhimService
+    private quanLiPhimService: QuanLiPhimService,
+    private dataService: DataService
     ) { }
 
   ngOnInit() {
@@ -26,10 +29,16 @@ export class PhongVeComponent implements OnInit {
   }
 
   getChiTietPhongVe(){
-    this.quanLiPhimService.chiTietPhongVe(this.maLichChieu).subscribe((data)=>{
-      console.log(data);
+    // this.quanLiPhimService.chiTietPhongVe(this.maLichChieu).subscribe((data)=>{
+    //   console.log(data);
+    //   this.danhSachGhe = data.DanhSachGhe;
+    // });
+
+    const uri = `QuanLyPhim/ChiTietPhongVe?MaLichChieu=${this.maLichChieu}`;
+    this.dataService.get(uri).subscribe((data:any) => {
       this.danhSachGhe = data.DanhSachGhe;
     });
+
   }
 
   chonGhe(objGhe){

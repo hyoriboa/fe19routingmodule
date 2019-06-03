@@ -1,25 +1,62 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 mx-auto">
-      <form action="">
+        <!-- <mat-checkbox>Check me!</mat-checkbox> -->
+
+      <form action="" #formDangKy="ngForm">
+        <!-- <form action="" #formDangKy="ngForm" (ngSubmit)="DangKy(formDangKy.value)"> -->
         <div class="form-group">
           <label>Tài khoản</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Mật khẩu</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Số điện thoại</label>
-          <input type="text" class="form-control">
+          <!-- <input type="text" class="form-control" name="taiKhoan" [(ngModel)]="taiKhoan"> -->
+          <input type="text" class="form-control" minlength="7" maxlength="15" #taikhoan="ngModel" name="taiKhoan"
+            ngModel required>
+
+          <!--cú pháp kiểm tra -->
+          <div *ngIf="taikhoan.errors && (taikhoan.dirty || taikhoan.touched) ">
+            <!-- kiểm tra rông -->
+            <div *ngIf="taikhoan.errors.required" class="alert alert-danger">
+              Tài khoản trống
+            </div>
+
+            <!-- kiểm tra độ dài -->
+            <div *ngIf="taikhoan.errors.minlength || taikhoan.errors.maxlength" class="alert alert-danger">
+              Độ dài kí tự phải từ 7 - 15
+            </div>
+          </div>
         </div>
 
-        <button type="button" class="btn btn-success">Đăng ký</button>
+        <div class="form-group">
+          <label>Mật khẩu</label>
+          <input type="text" class="form-control" name="matKhau" ngModel>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"
+            name="email" ngModel required>
+
+          <!-- ktra -->
+          <div *ngIf="email.errors && (email.dirty || email.touched)">
+            <!-- ktra rong -->
+            <div *ngIf="email.errors.required" class="alert alert-danger">
+              Email không được rỗng
+            </div>
+            <!-- ktra định dạng -->
+            <div *ngIf="email.errors.pattern" class="alert alert-danger">
+              Email ko đúng định dạng
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input type="text" class="form-control" name="soDT" ngModel>
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="DangKy(formDangKy.value)">
+          Đăng ký
+        </button>
+        <button type="submit" class="btn btn-danger m-5">Cancel</button>
       </form>
     </div>
   </div>

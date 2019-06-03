@@ -4,12 +4,18 @@ import { DangKyComponent } from './dang-ky/dang-ky.component';
 import { DangNhapComponent } from './dang-nhap/dang-nhap.component';
 import { FormComponent } from './form.component';
 import { FormRoutingModule } from './form-routing.module';
+import { FormsModule } from '@angular/forms';
+// import { MaterialModule } from 'src/_core/share/material.module';
+
+//import form
 
 @NgModule({
   declarations: [DangKyComponent, DangNhapComponent, FormComponent],
   imports: [
     CommonModule,
-    FormRoutingModule
+    FormRoutingModule,
+    FormsModule,
+    // MaterialModule
   ]
 })
 export class FormModule { }

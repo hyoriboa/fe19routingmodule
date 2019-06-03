@@ -3,6 +3,9 @@ import { QuanLiPhimService } from './../../../../_core/services/quan-li-phim.ser
 import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router';
 
+import {DataService} from './../../../../_core/services/data.service';
+
+
 @Component({
   selector: 'app-chi-tiet-phim',
   templateUrl: './chi-tiet-phim.component.html',
@@ -20,7 +23,8 @@ export class ChiTietPhimComponent implements OnInit {
   constructor(
     private quanLiPhimService: QuanLiPhimService, 
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
     ) { }
 
   //cấc hàm chạy trong onInit
@@ -30,10 +34,16 @@ export class ChiTietPhimComponent implements OnInit {
   }
 
   getChiTietPhim(){
-    this.quanLiPhimService.layChiTietPhim(this.maPhim).subscribe((data:any)=>{
-      console.log(data);
-       this.phim = data;
+    // this.quanLiPhimService.layChiTietPhim(this.maPhim).subscribe((data:any)=>{
+    //   console.log(data);
+    //    this.phim = data;
+    // });
+
+    const uri = `QuanLyPhim/LayChiTietPhim?MaPhim=${this.maPhim}`;
+    this.dataService.get(uri).subscribe((data:any)=>{
+      this.phim = data;
     });
+
   }
 
   getParams(){
