@@ -1,3 +1,6 @@
+install material v7 npm install --save @angular/material@7.3.7
+npm install --save @angular/cdk@7.3.7
+
 # Fe19RoutingModule
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.

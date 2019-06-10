@@ -7,6 +7,7 @@ import { DanhSachPhimComponent } from './danh-sach-phim/danh-sach-phim.component
 import { ChiTietPhimComponent } from './danh-sach-phim/chi-tiet-phim/chi-tiet-phim.component';
 import { AuthenGuard } from 'src/_core/guards/authen.guard';
 import { CanDeActivateGuard } from 'src/_core/guards/can-de-activate.guard';
+import { PipesComponent } from './pipes/pipes.component';
 
 
 const routes: Routes = [
@@ -40,8 +41,13 @@ const routes: Routes = [
 
         },
 
+        //pipe
+        {path: "pipe", component: PipesComponent},
+
         //tin tức
         {path: "tin-tuc", component: TinTucComponent},
+
+        
 
         
         

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { moveEmbeddedView } from '@angular/core/src/view';
 
 import { Router } from '@angular/router';
+import { ShareDataService } from 'src/_core/shared/share-data.service';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class ItemPhimComponent implements OnInit {
 
   @Input() phim;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private shateDataService : ShareDataService
+    ) { }
 
   ngOnInit() {
   }
@@ -24,5 +27,8 @@ export class ItemPhimComponent implements OnInit {
     );
   }
 
+  xemNhanh(){
+    this.shateDataService.shareingDataChiTietPhim(this.phim);
+  }
 
 }
